@@ -1,0 +1,28 @@
+{
+  "name": "ecommerce-dbms-project",
+  "version": "1.0.0",
+  "description": "E-commerce website with MySQL database, Node.js backend, and vanilla JavaScript frontend",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "setup-db": "mysql -u root -p < database/schema.sql"
+  },
+  "keywords": [
+    "ecommerce",
+    "mysql",
+    "express",
+    "nodejs",
+    "database"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
