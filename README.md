@@ -65,19 +65,33 @@ A complete e-commerce web application built with MySQL, Node.js/Express, and van
 
 3. **Setup MySQL Database**
 
-   Login to MySQL:
+   **For Windows PowerShell:**
+   ```powershell
+   # Option 1: Use the PowerShell script
+   .\setup-database.ps1
+
+   # Option 2: Manual setup
+   Get-Content database/schema.sql | mysql -u root -p
+   ```
+
+   **For Windows Command Prompt:**
+   ```cmd
+   setup-database.bat
+   ```
+
+   **For Linux/Mac (Bash):**
+   ```bash
+   mysql -u root -p < database/schema.sql
+   ```
+
+   **Alternative (All platforms):**
+   Login to MySQL and source the file:
    ```bash
    mysql -u root -p
    ```
-
-   Run the schema file:
-   ```bash
-   source database/schema.sql
-   ```
-
-   Or use the npm script:
-   ```bash
-   npm run setup-db
+   Then inside MySQL:
+   ```sql
+   source database/schema.sql;
    ```
 
 4. **Configure Environment Variables**
