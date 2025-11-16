@@ -65,14 +65,13 @@ A complete e-commerce web application built with MySQL, Node.js/Express, and van
 
 3. **Setup MySQL Database**
 
-   **For Windows PowerShell:**
+   **For Windows PowerShell (Recommended):**
    ```powershell
-   # Option 1: Use the PowerShell script
-   .\setup-database.ps1
-
-   # Option 2: Manual setup
-   Get-Content database/schema.sql | mysql -u root -p
+   # This script automatically finds MySQL and sets up the database
+   .\setup-database-manual.ps1
    ```
+
+   > **Note:** If you get "mysql is not recognized" error, the script above will automatically find your MySQL installation. See [setup-mysql-path.md](setup-mysql-path.md) for adding MySQL to PATH permanently.
 
    **For Windows Command Prompt:**
    ```cmd
@@ -84,14 +83,9 @@ A complete e-commerce web application built with MySQL, Node.js/Express, and van
    mysql -u root -p < database/schema.sql
    ```
 
-   **Alternative (All platforms):**
-   Login to MySQL and source the file:
-   ```bash
-   mysql -u root -p
-   ```
-   Then inside MySQL:
-   ```sql
-   source database/schema.sql;
+   **If MySQL is already in your PATH:**
+   ```powershell
+   Get-Content database/schema.sql | mysql -u root -p
    ```
 
 4. **Configure Environment Variables**
