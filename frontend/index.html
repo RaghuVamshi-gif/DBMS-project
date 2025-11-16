@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>E-Commerce Store</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" data-page="home" class="nav-link active">Home</a></li>
+                <li><a href="#" data-page="products" class="nav-link">Products</a></li>
+                <li><a href="#" data-page="orders" class="nav-link">Orders</a></li>
+                <li><a href="#" data-page="customers" class="nav-link">Customers</a></li>
+                <li><a href="#" data-page="cart" class="nav-link">Cart <span id="cart-count" class="badge">0</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Home Page -->
+        <section id="home-page" class="page active">
+            <div class="hero">
+                <h2>Welcome to Our E-Commerce Store</h2>
+                <p>Find the best products at amazing prices</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="stat-revenue">₹0</h3>
+                    <p>Total Revenue</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="stat-orders">0</h3>
+                    <p>Total Orders</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="stat-customers">0</h3>
+                    <p>Total Customers</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="stat-products">0</h3>
+                    <p>Total Products</p>
+                </div>
+            </div>
+
+            <div class="categories-section">
+                <h3>Shop by Category</h3>
+                <div id="categories-list" class="categories-grid"></div>
+            </div>
+        </section>
+
+        <!-- Products Page -->
+        <section id="products-page" class="page">
+            <div class="page-header">
+                <h2>Products</h2>
+                <div class="filters">
+                    <select id="category-filter" class="form-select">
+                        <option value="">All Categories</option>
+                    </select>
+                </div>
+            </div>
+            <div id="products-list" class="products-grid"></div>
+        </section>
+
+        <!-- Orders Page -->
+        <section id="orders-page" class="page">
+            <div class="page-header">
+                <h2>Orders</h2>
+            </div>
+            <div id="orders-list" class="orders-container"></div>
+        </section>
+
+        <!-- Customers Page -->
+        <section id="customers-page" class="page">
+            <div class="page-header">
+                <h2>Customers</h2>
+                <button class="btn btn-primary" onclick="showAddCustomerModal()">Add Customer</button>
+            </div>
+            <div id="customers-list" class="customers-container"></div>
+        </section>
+
+        <!-- Cart Page -->
+        <section id="cart-page" class="page">
+            <div class="page-header">
+                <h2>Shopping Cart</h2>
+            </div>
+            <div id="cart-items" class="cart-container"></div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <h3>Total: ₹<span id="cart-total">0</span></h3>
+                </div>
+                <div class="cart-actions">
+                    <button class="btn btn-secondary" onclick="clearCart()">Clear Cart</button>
+                    <button class="btn btn-primary" onclick="showCheckoutModal()">Checkout</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Customer Modal -->
+    <div id="add-customer-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('add-customer-modal')">&times;</span>
+            <h2>Add New Customer</h2>
+            <form id="add-customer-form">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" name="name" required class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" name="email" required class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>Phone:</label>
+                    <input type="tel" name="phone" required class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>Address:</label>
+                    <textarea name="address" required class="form-input"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Customer</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('checkout-modal')">&times;</span>
+            <h2>Checkout</h2>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label>Select Customer:</label>
+                    <select name="customer_id" required class="form-select" id="checkout-customer-select">
+                        <option value="">-- Select Customer --</option>
+                    </select>
+                </div>
+                <div class="checkout-summary">
+                    <h3>Order Summary</h3>
+                    <div id="checkout-items"></div>
+                    <div class="checkout-total">
+                        <strong>Total: ₹<span id="checkout-total">0</span></strong>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
